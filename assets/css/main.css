@@ -1778,7 +1778,7 @@ section,
 .contact .php-email-form .checkbox-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
-  gap: 10px; /* Space between checkboxes */
+  gap: 5px; /* Space between checkboxes */
   margin-top: 10px;
 }
 

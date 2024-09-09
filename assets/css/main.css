@@ -1097,23 +1097,6 @@ section,
   margin-bottom: 0;
 }
 
-.services .service-item:hover {
-  background: var(--background-color);
-}
-
-.services .service-item:hover h3 {
-  color: var(--accent-color);
-}
-
-.services .service-item:hover .icon {
-  background: var(--surface-color);
-  border: 2px solid var(--accent-color);
-}
-
-.services .service-item:hover .icon i {
-  color: var(--accent-color);
-}
-
 /*--------------------------------------------------------------
 # Alt Services Section
 --------------------------------------------------------------*/
@@ -1731,6 +1714,7 @@ section,
 
 .contact .php-email-form input[type=text],
 .contact .php-email-form input[type=email],
+.contact .php-email-form input[type=tel],
 .contact .php-email-form textarea {
   color: var(--default-color);
   background-color: color-mix(in srgb, var(--background-color), transparent 50%);
@@ -1743,12 +1727,14 @@ section,
 
 .contact .php-email-form input[type=text]:focus,
 .contact .php-email-form input[type=email]:focus,
+.contact .php-email-form input[type=tel]:focus,
 .contact .php-email-form textarea:focus {
   border-color: var(--accent-color);
 }
 
 .contact .php-email-form input[type=text]::placeholder,
 .contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form input[type=tel]::placeholder,
 .contact .php-email-form textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
@@ -1765,6 +1751,86 @@ section,
 .contact .php-email-form button[type=submit]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
+
+/* Dropdown styling for Select School Year */
+.contact .php-email-form select {
+  color: var(--default-color);
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+  font-size: 14px;
+  padding: 10px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+}
+
+.contact .php-email-form select:focus {
+  border-color: var(--accent-color);
+}
+
+.contact .php-email-form select option {
+  color: var(--default-color);
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+}
+
+/* Checkbox styling */
+/* Grid layout for checkboxes with 2 columns */
+.contact .php-email-form .checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns */
+  gap: 10px; /* Space between checkboxes */
+  margin-top: 10px;
+}
+
+/* Checkbox wrapper to align checkbox and label */
+.contact .php-email-form .checkbox-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Customize checkbox appearance */
+.contact .php-email-form input[type=checkbox] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  border: 2px solid color-mix(in srgb, var(--default-color), transparent 80%);
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Checkmark style for checked state */
+.contact .php-email-form input[type=checkbox]:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.contact .php-email-form input[type=checkbox]:checked::before {
+  color: var(--contrast-color);
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Hover effect for checkbox */
+.contact .php-email-form input[type=checkbox]:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  border-color: var(--accent-color);
+}
+
+/* Label styling */
+.contact .php-email-form input[type=checkbox] + label {
+  margin-left: 4px;
+  font-size: 14px;
+  color: var(--default-color);
+  cursor: pointer;
+  white-space: nowrap; /* Prevent wrapping */
+}
+
 
 /*--------------------------------------------------------------
 # Portfolio Details Section

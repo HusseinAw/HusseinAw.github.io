@@ -1803,8 +1803,15 @@ section,
 
 /* Checkmark style for checked state */
 .contact .php-email-form input[type=checkbox]:checked {
+  appearance: none;
+  width: 18px;
+  height: 18px;
   background-color: var(--accent-color);
   border-color: var(--accent-color);
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .contact .php-email-form input[type=checkbox]:checked::before {
@@ -1830,7 +1837,6 @@ section,
   cursor: pointer;
   white-space: nowrap; /* Prevent wrapping */
 }
-
 
 /*--------------------------------------------------------------
 # Portfolio Details Section

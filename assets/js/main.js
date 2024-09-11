@@ -1,11 +1,3 @@
-/**
-* Template Name: Flexor
-* Template URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 (function() {
   "use strict";
 
@@ -209,4 +201,66 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  // Initialize the Swiper instance
+  var swiper = new Swiper('.swiper-container', {
+    // Optional parameters like pagination, navigation, etc.
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    // Other Swiper options
+  });
+
+  // Add event listeners to the buttons
+  document.querySelectorAll('.swiper-button').forEach(button => {
+    button.addEventListener('click', function() {
+      var slideIndex = this.getAttribute('data-slide');
+      swiper.slideTo(slideIndex); // Go to the slide at the specified index
+    });
+  });
+
+  var form = document.getElementById("my-form");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+  
+    var thisForm = event.target;
+    thisForm.querySelector('.loading').classList.add('d-block');
+    thisForm.querySelector('.error-message').classList.remove('d-block');
+    thisForm.querySelector('.sent-message').classList.remove('d-block');
+  
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      return response.json().then(data => {
+        thisForm.querySelector('.loading').classList.remove('d-block');
+        if (JSON.stringify(data) === JSON.stringify({ next: "/thanks?language=en", ok: true })) {
+          thisForm.querySelector('.sent-message').classList.add('d-block');
+          form.reset();
+        } else {
+          if (Object.hasOwn(data, 'errors')) {
+            // displayError(thisForm, data["errors"].map(error => error["message"]).join(", "));
+          } else {
+            displayError(thisForm, "Oops! There was a problem submitting your form");
+          }
+        }
+      });
+    }).catch(error => {
+      displayError(thisForm, "Oops! There was a problem submitting your form");
+    });
+  }
+  
+  form.addEventListener("submit", handleSubmit);
+  
+  function displayError(thisForm, error) {
+    thisForm.querySelector('.loading').classList.remove('d-block');
+    thisForm.querySelector('.error-message').innerHTML = error;
+    thisForm.querySelector('.error-message').classList.add('d-block');
+  }  
 })();
